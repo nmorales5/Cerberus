@@ -78,7 +78,7 @@ db_host = os.getenv("PG_HOST")
 db_port = "5432"
 db_name = os.getenv("PG_DB")
 
-connection_str = f"postgresql://{db_user}:{db_pass}@{db_host}:{db_port}/{db_name}"
+connection_str = f"postgresql+psycopg2://{db_user}:{db_pass}@{db_host}:{db_port}/{db_name}"
 engine = sqlalchemy.create_engine(connection_str)
 
 # Step 4: Load into raw.craigslist_data
