@@ -28,7 +28,7 @@ jobs:
           pip install -r requirements.txt
 
       - name: Run Zillow API script
-        run: python notebooks/Zillow_API_Extract_Load_Raw.py
+        run: run: python notebooks/Zillow_API_Extract_Load_Raw/Zillow_API_Extract_Load_Raw.py
 
       - name: Finished
         run: echo "Zillow API script completed successfully!"
