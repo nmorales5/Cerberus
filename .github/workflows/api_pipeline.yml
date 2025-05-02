@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
 
 jobs:
-  run-api-script:
+  run-api-notebook:
     runs-on: ubuntu-latest
 
     env:
@@ -26,9 +26,10 @@ jobs:
       - name: Install dependencies
         run: |
           pip install -r requirements.txt
+          pip install papermill
 
-      - name: Run Zillow API script
-        run: python notebooks/Zillow_API_Extract_Load_Raw/Zillow_API_Extract_Load_Raw.py
+      - name: Run Zillow API notebook
+        run: papermill notebooks/Zillow_API_Extract_Load_Raw.ipynb notebooks/Zillow_API_Extract_Load_Output.ipynb
 
       - name: Finished
-        run: echo "Zillow API script completed successfully!"
+        run: echo "Zillow API notebook ran successfully!"
