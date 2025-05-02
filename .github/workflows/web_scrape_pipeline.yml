@@ -7,6 +7,13 @@ jobs:
   run-web-scrape:
     runs-on: ubuntu-latest
 
+    env:
+      DB_HOST: ${{ secrets.DB_HOST }}
+      DB_USER: ${{ secrets.DB_USER }}
+      DB_PASS: ${{ secrets.DB_PASS }}
+      DB_PORT: ${{ secrets.DB_PORT }}
+      DB_NAME: ${{ secrets.DB_NAME }}
+
     steps:
       - name: Checkout repo
         uses: actions/checkout@v3
@@ -17,8 +24,10 @@ jobs:
           python-version: '3.10'
 
       - name: Install dependencies
-        run: |
-          pip install -r requirements.txt
+        run: pip install -r requirements.txt
 
-      - name: Run Craigslist web scraper
+      - name: Run Craigslist web scrape script
         run: python notebooks/Craigslist_Web_Scrape_Extract_Load_Raw.py
+
+      - name: Finished
+        run: echo "Craigslist web scrape script ran successfully!"
